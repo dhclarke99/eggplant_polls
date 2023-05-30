@@ -2,7 +2,7 @@ const {Schema, model} = require('mongoose');
 
 
 const voteSchema = new Schema({
-  poll: {
+  polls: {
     type: Schema.Types.ObjectId,
     ref: 'Poll',
     required: true,

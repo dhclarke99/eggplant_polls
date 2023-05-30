@@ -3,20 +3,20 @@ const { Schema, model } = require('mongoose');
 const pollSchema = new Schema({
     title: {
         type: String,
-        required: true,
+        required: false,
     },
     description: {
         type: String,
-        required: true,
+        required: false,
     },
     creator: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
+        required: false,
     },
     options: [{
         type: String,
-        required: true,
+        required: false,
     }],
     createdAt: {
         type: Date,
@@ -28,7 +28,7 @@ const pollSchema = new Schema({
     },
     endTime: {
         type: Date,
-        required: true,
+        required: false,
     },
 
 });
