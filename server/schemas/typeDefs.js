@@ -7,7 +7,7 @@ const typeDefs = gql`
     email: String
     password: String
     polls: [Poll]!
-    eggplants: Number
+    eggplants: Int
   }
 
   type Poll {
@@ -15,8 +15,8 @@ const typeDefs = gql`
     title: String
     description: String
     creator: [User]
-    createdAt: Date
-    endTime: Date
+    createdAt: String
+    endTime: String
   }
 
   type Vote {
@@ -35,15 +35,15 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     polls(pollId: String): [Poll]
-    polls(pollId: ID!): Polls
+    poll: [Poll]
     me: User
   }
 
   type Mutation {
     createUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    createPoll(pollId: String!): Thought
-    removePoll(pollId: ID!): Thought
+    createPoll(pollId: String!): Poll
+    removePoll(pollId: ID!): Poll
     
   }
 `;
