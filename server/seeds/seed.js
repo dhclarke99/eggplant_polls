@@ -1,12 +1,12 @@
 const db = require('../config/connection');
-const { polls } = require('../models');
+const { Poll } = require('../models');
 
-const pollData = require('./techData.json');
+const pollData = require('./pollData.json');
 
-db.eggplantPolls('open', async () => {
-  await polls.deleteMany({});
+db.once('open', async () => {
+  await Poll.deleteMany({});
 
-  const polls = await polls.insertMany(pollData);
+  const polls = await Poll.insertMany(pollData);
 
   console.log('Polls seeded!');
   process.exit(0);
