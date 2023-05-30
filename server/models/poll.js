@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const Poll = model('Poll', pollSchema);
 
 const pollSchema = new Schema({
     title: {
@@ -33,5 +32,7 @@ const pollSchema = new Schema({
     },
 
 });
+
+const Poll = model('Poll', pollSchema);
 
 module.exports = Poll;

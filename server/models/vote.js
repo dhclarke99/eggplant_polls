@@ -1,5 +1,5 @@
 const {Schema, model} = require('mongoose');
-const Vote = model('Vote', voteSchema);
+
 
 const voteSchema = new Schema({
   poll: {
@@ -17,5 +17,7 @@ const voteSchema = new Schema({
     required: true,
   },
 });
+
+const Vote = model('Vote', voteSchema);
 
 module.exports = Vote;
