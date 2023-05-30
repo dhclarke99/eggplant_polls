@@ -1,68 +1,45 @@
 [
     {
       "id" : "1",
-      "pollQuestion": "Eggplants are the best vegetable. ",
+      "title": "Eggplants are the best vegetable. ",
       "pollAnswer1" : "True",
       "pollAnswer2" : "False"
     },
     {
         "id" : "2",
-      "pollQuestion": "The Loch Ness Monster IS better than Bigfoot.",
+      "title": "The Loch Ness Monster IS better than Bigfoot.",
       "pollAnswer1" : "True",
       "pollAnswer2" : "False"
     },
     {
         "id" : "3",
-      "pollQuestion": "Blue is your favorite color.",
+      "title": "Blue is your favorite color.",
       "pollAnswer1" : "True",
       "pollAnswer2" : "False"
     },
     {
         "id" : "4",
-      "pollQuestion": "Dogs are better than cats.",
+      "title": "Dogs are better than cats.",
       "pollAnswer1" : "True",
       "pollAnswer2" : "False"
     },
     {
         "id" : "6",
-      "pollQuestion": "Blockbuster is better than Netflix!",
+      "title": "Blockbuster is better than Netflix!",
       "pollAnswer1" : "True",
       "pollAnswer2" : "False"
     },
     {
         "id" : "7",
-      "pollQuestion": "Winter is the best season.",
+      "title": "Winter is the best season.",
       "pollAnswer1" : "True",
       "pollAnswer2" : "False"
     },
     {
         "id" : "8",
-      "pollQuestion": "Coding is easy!",
-      "pollAnswer1" : "True",
-      "pollAnswer2" : "False"
-    },
-    {
-        "id" : "9",
-      "pollQuestion": "There is no such thing as too many video games.",
-      "pollAnswer1" : "True",
-      "pollAnswer2" : "False"
-    },
-    {
-        "id" : "10",
-      "pollQuestion": "Zelda is the best Nintendo franchise.",
-      "pollAnswer1" : "True",
-      "pollAnswer2" : "False"
-    },
-    {
-        "id" : "11",
-      "pollQuestion": "Call of Duty is the best first person shooter game.",
-      "pollAnswer1" : "True",
-      "pollAnswer2" : "False"
-    },
-    {
-        "id" : "12",
-      "pollQuestion": "Coffee makes everythinb better.",
+      "title": "Coding is easy!",
       "pollAnswer1" : "True",
       "pollAnswer2" : "False"
     }
+
   ]
