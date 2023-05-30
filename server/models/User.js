@@ -23,7 +23,7 @@ const userSchema = new Schema({
     },
     eggplants: {
         type: Number,
-        default: 0,
+        default: 1000,
     },
 });
 
