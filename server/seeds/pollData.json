@@ -2,6 +2,7 @@
   {
     "title": "Eggplants are the best vegetable.",
     "description": "Do you believe that eggplants are the best vegetable?",
+    "value": 60,
     "options": [
       "True",
       "False"
@@ -10,6 +11,7 @@
   {
     "title": "The Loch Ness Monster IS better than Bigfoot.",
     "description": "Which legendary creature do you think is better?",
+    "value": 40,
     "options": [
       "True",
       "False"
