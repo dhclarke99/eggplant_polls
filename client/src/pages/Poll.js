@@ -69,7 +69,7 @@ const Poll = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="enter a number"
+                  placeholder="DropdownList of #s?"
                   name="value"
                   type="value"
                   value={formState.password}
