@@ -90,6 +90,23 @@ const resolvers = {
               throw new Error('Failed to remove poll');
             }
           },
+          createVote: async (parent, { optionId }, context) => {
+            if (!context.user) {
+              throw new AuthenticationError('Not Authenticated');
+            }
+            try {
+              const user = await User.findById(context.user._id);
+              const poll = await Poll.findOne({ options: {$elemMatch: { _id: optionId }}});
+              if (!poll) {
+                throw new Error('Poll not found');
+              }
+              const vote = await Vote.create({ poll: poll._id, user: user._id, option: optionId });
+              return vote;
+            } catch (err) {
+              console.log(err);
+              throw new Error('Failed to create vote');
+            }
+        },
     },
 };
 

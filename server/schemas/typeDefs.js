@@ -50,7 +50,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     createPoll(pollId: String!): Poll
     removePoll(pollId: ID!): Poll
-    
+    createVote(pollId: ID!, option: String!): Vote
   }
 `;
 
