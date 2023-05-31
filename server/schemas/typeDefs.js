@@ -10,13 +10,18 @@ const typeDefs = gql`
     eggplants: Int
   }
 
+  type Option {
+    optionText: String
+  }
+
   type Poll {
     _id: ID
     title: String
     description: String
-    creator: [User]
+    creator: User
     createdAt: String
     endTime: String
+    options: [Option]
   }
 
   type Vote {
@@ -34,8 +39,8 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    polls(pollId: String): [Poll]
-    poll: [Poll]
+    polls: [Poll]
+    poll(pollId: ID!): Poll
     me: User
   }
 
