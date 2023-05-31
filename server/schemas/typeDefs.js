@@ -55,3 +55,5 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
+
+// createPoll(pollId: String!, value: Int!, optionId: String!): Poll
