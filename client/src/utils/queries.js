@@ -1,13 +1,17 @@
 import { gql } from '@apollo/client';
 
-// export const QUERY_Polls = gql`
-//   query tech {
-//     poll {
-//       _id
-//       body
-//     }
-//   }
-// `;
+export const QUERY_POLLS = gql`
+query Query {
+    polls {
+      _id
+      title
+      description
+      options {
+        optionText
+      }
+    }
+  }
+`;
 
 // export const QUERY_MATCHUPS = gql`
 //   query matchups($_id: String) {
