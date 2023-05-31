@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Poll, Vote } = require('../models');
-const { signToken } = require('../');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
@@ -22,9 +22,9 @@ const resolvers = {
                 return await User.findOne({_id: context.user._id}).populate('polls');
             } throw new AuthenticationError('Not Authenticated')
         },
-        // votes: async () => {
-        //     return await Vote.find();
-        //   },
+        votes: async () => {
+            return await Vote.find();
+          },
     },
     Mutation: {
         createUser: async (parent, { username, email, password }) => {
@@ -91,24 +91,26 @@ const resolvers = {
               throw new Error('Failed to remove poll');
             }
           },
-        //   createVote: async (parent, { optionId }, context) => {
-        //     if (!context.user) {
-        //       throw new AuthenticationError('Not Authenticated');
-        //     }
-        //     try {
-        //       const user = await User.findById(context.user._id);
-        //       const poll = await Poll.findOne({ options: {$elemMatch: { _id: optionId }}});
-        //       if (!poll) {
-        //         throw new Error('Poll not found');
-        //       }
-        //       const vote = await Vote.create({ poll: poll._id, user: user._id, option: optionId });
-        //       return vote;
-        //     } catch (err) {
-        //       console.log(err);
-        //       throw new Error('Failed to create vote');
-        //     }
-        // },
+          createVote: async (parent, { pollId, optionId }, context) => {
+            // if (!context.user) {
+            //   throw new AuthenticationError('Not Authenticated');
+            // }
+            try {
+            //   const user = await User.findById(context.user._id);
+              const user = await User.findById("6477820b424319c1f4f5b8b4");
+              const poll = await Poll.findOne({ _id: pollId });
+              if (!poll) {
+                throw new Error('Poll not found');
+              }
+              const vote = await Vote.create({ poll: poll._id, user: user._id, option: optionId });
+              return vote;
+            } catch (err) {
+              console.log(err);
+              throw new Error('Failed to create vote');
+            }
+        },
     },
 };
 
 module.exports = resolvers;
+
