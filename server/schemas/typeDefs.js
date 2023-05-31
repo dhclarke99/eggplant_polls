@@ -19,6 +19,7 @@ const typeDefs = gql`
     title: String
     description: String
     creator: User
+    value: Int
     createdAt: String
     endTime: String
     options: [Option]
@@ -54,3 +55,5 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
+
+// createPoll(pollId: String!, value: Int!, optionId: String!): Poll
