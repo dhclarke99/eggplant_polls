@@ -10,13 +10,19 @@ const typeDefs = gql`
     eggplants: Int
   }
 
+  type Option {
+    optionText: String
+  }
+
   type Poll {
     _id: ID
     title: String
     description: String
-    creator: [User]
+    creator: User
+    value: Int
     createdAt: String
     endTime: String
+    options: [Option]
   }
 
   type Vote {
@@ -34,8 +40,8 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    polls(pollId: String): [Poll]
-    poll: [Poll]
+    polls: [Poll]
+    poll(pollId: ID!): Poll
     me: User
   }
 
@@ -44,8 +50,10 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     createPoll(pollId: String!): Poll
     removePoll(pollId: ID!): Poll
-    
+    createVote(pollId: ID!, option: String!): Vote
   }
 `;
 
 module.exports = typeDefs;
+
+// createPoll(pollId: String!, value: Int!, optionId: String!): Poll

@@ -1,45 +1,21 @@
 [
-    {
-      "id" : "1",
-      "title": "Eggplants are the best vegetable. ",
-      "pollAnswer1" : "True",
-      "pollAnswer2" : "False"
-    },
-    {
-        "id" : "2",
-      "title": "The Loch Ness Monster IS better than Bigfoot.",
-      "pollAnswer1" : "True",
-      "pollAnswer2" : "False"
-    },
-    {
-        "id" : "3",
-      "title": "Blue is your favorite color.",
-      "pollAnswer1" : "True",
-      "pollAnswer2" : "False"
-    },
-    {
-        "id" : "4",
-      "title": "Dogs are better than cats.",
-      "pollAnswer1" : "True",
-      "pollAnswer2" : "False"
-    },
-    {
-        "id" : "6",
-      "title": "Blockbuster is better than Netflix!",
-      "pollAnswer1" : "True",
-      "pollAnswer2" : "False"
-    },
-    {
-        "id" : "7",
-      "title": "Winter is the best season.",
-      "pollAnswer1" : "True",
-      "pollAnswer2" : "False"
-    },
-    {
-        "id" : "8",
-      "title": "Coding is easy!",
-      "pollAnswer1" : "True",
-      "pollAnswer2" : "False"
-    }
+  {
+    "title": "Eggplants are the best vegetable.",
+    "description": "Do you believe that eggplants are the best vegetable?",
+    "value": 60,
+    "options": [
+      "True",
+      "False"
+    ]
+  },
+  {
+    "title": "The Loch Ness Monster IS better than Bigfoot.",
+    "description": "Which legendary creature do you think is better?",
+    "value": 40,
+    "options": [
+      "True",
+      "False"
+    ]
+  }
 
-  ]
+]
