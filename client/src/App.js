@@ -7,6 +7,7 @@ import Farm from './pages/Farm';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Poll from './pages/Poll';
+import Profile from './pages/Profile';
 import Header from './components/header';
 
 
@@ -61,6 +62,10 @@ function App() {
               <Route 
                 path="/poll" 
                 element={<Poll />}
+              />
+              <Route 
+                path="/me" 
+                element={<Profile />}
               />
             </Routes>
           </div>
