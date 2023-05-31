@@ -30,6 +30,8 @@ const Home = () => {
               return (
                 <div key={poll._id}>
                   <h3>{poll.title}</h3>
+                  <p>{poll.description}</p>
+                  <button></button>
                 </div>
               );
             })}

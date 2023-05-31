@@ -22,16 +22,16 @@ function App() {
               element={<Home />}
             />
             <Route 
-              path="/matchup" 
+              path="/farm" 
               element={<Farm />}
             />
             <Route 
-              path="/matchup/:id" 
+              path="/login" 
               element={<Login />}
             />
             <Route 
               path="*"
-              element={<Poll />}
+              element={<Home />}
             />
           </Routes>
         </div>
