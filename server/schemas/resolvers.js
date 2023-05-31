@@ -22,9 +22,9 @@ const resolvers = {
                 return await User.findOne({_id: context.user._id}).populate('polls');
             } throw new AuthenticationError('Not Authenticated')
         },
-        votes: async () => {
-            return await Vote.find();
-          },
+        // votes: async () => {
+        //     return await Vote.find();
+        //   },
     },
     Mutation: {
         createUser: async (parent, { username, email, password }) => {
