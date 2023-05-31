@@ -6,6 +6,7 @@ query polls {
       _id
       title
       description
+      value
       options {
         optionText
       }
