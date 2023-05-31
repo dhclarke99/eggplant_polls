@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+
+body {
+  background-color: #614051;
+  height: 100% !important;
+  font-family: 'Nunito', sans-serif;
+  color: white
+}
+
+header {
+  background-color: #69A583 !important;
+  color: white;
+}
