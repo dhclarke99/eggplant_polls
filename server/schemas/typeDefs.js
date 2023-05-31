@@ -22,13 +22,14 @@ const typeDefs = gql`
     value: Int
     createdAt: String
     endTime: String
-    options: [Option]
+    option1: String
+    option2: String
   }
 
   type Vote {
     _id: ID
-    polls: [Poll]
-    user: [User]
+    polls: Poll
+    user: User
     option: String
   }
 
@@ -43,6 +44,7 @@ const typeDefs = gql`
     polls: [Poll]
     poll(pollId: ID!): Poll
     me: User
+    votes: [Vote]
   }
 
   type Mutation {
@@ -50,7 +52,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     createPoll(pollId: String!): Poll
     removePoll(pollId: ID!): Poll
-    createVote(pollId: ID!, option: String!): Vote
+    createVote(pollId: ID!, optionId: String!): Vote
   }
 `;
 

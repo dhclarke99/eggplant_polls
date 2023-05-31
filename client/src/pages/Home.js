@@ -16,11 +16,9 @@ const Home = () => {
 
   return (
     <div className="card bg-white card-rounded w-50">
-      <div className="card-header bg-dark text-center">
-        <h1>Welcome to EggPlant Polls!</h1>
-      </div>
+      
       <div className="card-body m-5">
-        <h2>Here is a list of polls you can vote on:</h2>
+        <h1>Here is a list of polls you can vote on:</h1>
         {loading ? (
           <div>Loading...</div>
         ) : (
@@ -30,6 +28,10 @@ const Home = () => {
               return (
                 <div key={poll._id}>
                   <h3>{poll.title}</h3>
+                  <p>{poll.description}</p>
+                  <p>Reward: {poll.value} eggplants</p>
+                  <button>{poll.option1}</button>
+                  <button>{poll.option2}</button>
                 </div>
               );
             })}

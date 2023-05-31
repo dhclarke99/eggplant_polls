@@ -23,7 +23,8 @@ const userSchema = new Schema({
     },
     eggplants: {
         type: Number,
-        default: 1000,
+        default: 50,
+        required: true
     },
     polls: [{
         type: Schema.Types.ObjectId,
