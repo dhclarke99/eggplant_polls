@@ -26,6 +26,14 @@ const Home = () => {
     }
   };
 
+  const handleVote = () => {
+    if (isLoggedIn) {
+      console.log("click")
+    } else {
+      navigate('/login');
+    }
+  };
+
   return (
     <div className="card bg-white card-rounded w-50">
       
@@ -42,8 +50,8 @@ const Home = () => {
                   <h3>{poll.title}</h3>
                   <p>{poll.description}</p>
                   <p>Reward: {poll.value} eggplants</p>
-                  <button>{poll.option1}</button>
-                  <button>{poll.option2}</button>
+                  <button onClick={handleVote}>{poll.option1}</button>
+                  <button onClick={handleVote}>{poll.option2}</button>
                 </div>
               );
             })}
