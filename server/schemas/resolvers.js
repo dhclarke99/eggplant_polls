@@ -50,13 +50,13 @@ const resolvers = {
               throw new Error('Failed to login');
             }
           },
-          createPoll: async (parent, { pollId }, context) => {
+          createPoll: async (parent, { pollId, value }, context) => {
             if (!context.user) {
               throw new AuthenticationError('Not Authenticated');
             }
             try {
               const user = await User.findById(context.user._id);
-              const poll = await Poll.create({ _id: pollId, creator: user._id });
+              const poll = await Poll.create({ _id: pollId, creator: user._id, value });
               user.polls.push(poll);
               await user.save();
               return poll;
