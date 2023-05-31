@@ -6,9 +6,9 @@ query polls {
       _id
       title
       description
-      options {
-        optionText
-      }
+      value
+      option1
+      option2
     }
   }
 `;

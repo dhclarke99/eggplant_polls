@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
-import { ADD_POLL } from '../utils/mutations';
+import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-const Poll = () => {
+const Signup = () => {
   const [formState, setFormState] = useState({
-    title: '',
-    description: '',
-    value: '',
+    username: '',
+    email: '',
+    password: '',
   });
-  const [addPoll, { error, data }] = useMutation(ADD_POLL);
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -28,7 +28,7 @@ const Poll = () => {
     console.log(formState);
 
     try {
-      const { data } = await addPoll({
+      const { data } = await addUser({
         variables: { ...formState },
       });
 
@@ -42,7 +42,7 @@ const Poll = () => {
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Create Poll</h4>
+          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -53,25 +53,25 @@ const Poll = () => {
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
-                  placeholder="Title"
-                  name="title"
+                  placeholder="Your username"
+                  name="username"
                   type="text"
                   value={formState.name}
                   onChange={handleChange}
                 />
                 <input
                   className="form-input"
-                  placeholder="Description"
-                  name="description"
-                  type="text"
+                  placeholder="Your email"
+                  name="email"
+                  type="email"
                   value={formState.email}
                   onChange={handleChange}
                 />
                 <input
                   className="form-input"
-                  placeholder="DropdownList of #s?"
-                  name="value"
-                  type="value"
+                  placeholder="******"
+                  name="password"
+                  type="password"
                   value={formState.password}
                   onChange={handleChange}
                 />
@@ -97,4 +97,4 @@ const Poll = () => {
   );
 };
 
-export default Poll;
+export default Signup;

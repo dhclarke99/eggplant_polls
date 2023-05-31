@@ -22,7 +22,8 @@ const typeDefs = gql`
     value: Int
     createdAt: String
     endTime: String
-    options: [Option]
+    option1: String
+    option2: String
   }
 
   type Vote {

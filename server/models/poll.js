@@ -14,10 +14,14 @@ const pollSchema = new Schema({
         ref: 'User',
         required: false,
     },
-    options: [{
+    option1: {
         type: String,
-        required: false,
-    }],
+        required: true,
+    },
+    option2: {
+        type: String,
+        required: true,
+    },
     value: {
         type: Number,
         required: true,

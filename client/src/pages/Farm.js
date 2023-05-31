@@ -1,17 +1,18 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 
-function NotFound() {
-  let location = useLocation();
+
+function Farm() {
+ 
   return (
     <div className="card bg-white card-rounded w-50">
       <div className="card-header bg-dark text-center">
         <h1>
-          No match for <code>{location.pathname}</code>
+          Farm for Eggplants!
         </h1>
+        <button>Farm</button>
       </div>
     </div>
   );
 }
 
-export default NotFound;
+export default Farm;
