@@ -7,9 +7,8 @@ query polls {
       title
       description
       value
-      options {
-        optionText
-      }
+      option1
+      option2
     }
   }
 `;

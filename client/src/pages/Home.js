@@ -30,7 +30,8 @@ const Home = () => {
                   <h3>{poll.title}</h3>
                   <p>{poll.description}</p>
                   <p>Reward: {poll.value} eggplants</p>
-                  <button>{poll.option}</button>
+                  <button>{poll.option1}</button>
+                  <button>{poll.option2}</button>
                 </div>
               );
             })}
