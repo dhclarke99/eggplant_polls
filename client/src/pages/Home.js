@@ -4,10 +4,12 @@ import { QUERY_POLLS } from '../utils/queries';
 
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_POLLS, {
+  const { loading, data, error } = useQuery(QUERY_POLLS, {
     fetchPolicy: "no-cache"
   });
-  
+  if (error){
+    console.log(error)
+  }
 
   const pollList = data?.polls || [];
   console.log(pollList)

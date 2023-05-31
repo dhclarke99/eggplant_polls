@@ -11,6 +11,7 @@ const resolvers = {
             return await User.findOne({username}).populate('polls');
         },
         polls: async () => {
+          
             return await Poll.find();
         },
         poll: async (parent, {pollId}) => {
