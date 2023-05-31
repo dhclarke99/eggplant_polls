@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_POLLS } from '../utils/queries';
-
+import AuthService from '../utils/auth';
 
 
 const Home = () => {
+  const navigate = useNavigate();
   const { loading, data, error } = useQuery(QUERY_POLLS, {
     fetchPolicy: "no-cache"
   });
@@ -14,6 +15,16 @@ const Home = () => {
 
   const pollList = data?.polls || [];
   console.log(pollList)
+
+  const isLoggedIn = AuthService.loggedIn();
+
+  const handleClick = () => {
+    if (isLoggedIn) {
+      navigate('/poll');
+    } else {
+      navigate('/login');
+    }
+  };
 
   return (
     <div className="card bg-white card-rounded w-50">
@@ -41,9 +52,9 @@ const Home = () => {
       </div>
       <div className="card-footer text-center m-3">
         <h2>Ready to create a new poll?</h2>
-        <Link to="/poll">
-          <button className="btn btn-lg btn-danger">Create Poll!</button>
-        </Link>
+        
+          <button className="btn btn-lg btn-danger" onClick={handleClick}>Create Poll!</button>
+        
       </div>
     </div>
   );
