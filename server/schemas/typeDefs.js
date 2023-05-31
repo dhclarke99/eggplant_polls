@@ -19,6 +19,7 @@ const typeDefs = gql`
     title: String
     description: String
     creator: User
+    value: Int
     createdAt: String
     endTime: String
     options: [Option]
