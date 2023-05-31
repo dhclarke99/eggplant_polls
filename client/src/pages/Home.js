@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_POLLS } from '../utils/queries';
 
 
+
 const Home = () => {
   const { loading, data, error } = useQuery(QUERY_POLLS, {
     fetchPolicy: "no-cache"
