@@ -5,6 +5,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@ap
 import Home from './pages/Home';
 import Farm from './pages/Farm';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 import Poll from './pages/Poll';
 import Header from './components/header';
 
@@ -52,6 +53,10 @@ function App() {
               <Route 
                 path="/login" 
                 element={<Login />}
+              />
+              <Route 
+                path="/signup" 
+                element={<Signup />}
               />
               <Route 
                 path="/poll" 
