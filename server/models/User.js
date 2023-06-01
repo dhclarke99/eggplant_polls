@@ -26,6 +26,10 @@ const userSchema = new Schema({
         default: 50,
         required: true
     },
+    votes: [{
+        type: Schema.Types.ObjectId,
+        ref: "Vote"
+    }],
     polls: [{
         type: Schema.Types.ObjectId,
         ref: 'Poll',

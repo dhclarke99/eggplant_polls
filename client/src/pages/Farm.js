@@ -4,7 +4,7 @@ import AuthService from '../utils/auth';
 function Farm() {
   
   const handleClick = () => {
-    console.log(AuthService.getProfile())
+    
     console.log(AuthService.getProfile().data._id)
    
   };
