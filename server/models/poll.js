@@ -38,6 +38,10 @@ const pollSchema = new Schema({
         type: Date,
         required: false,
     },
+    users: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    }]
 
 });
 
