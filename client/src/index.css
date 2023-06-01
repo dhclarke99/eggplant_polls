@@ -48,6 +48,11 @@ header {
 
 ul {
   display: inline-flex;
-  margin-inline: 160px;
+
+ padding-inline-start: 40px;
+}
+
+.card-body {
+margin-right: 30px;
 }
 
