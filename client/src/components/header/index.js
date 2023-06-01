@@ -10,6 +10,7 @@ const Header = () => {
   };
   return (
     <header className="bg-primary text-light mb-4 py-3">
+
       <div class="container-fluid">
         <div class="navbar-brand" id="navbar">EggPlant Polls
           <p className="m-0" id="wager">Wager your Eggplant currency on poll results!</p></div>
@@ -46,6 +47,7 @@ const Header = () => {
         )
         }
       </ul>
+
     </header>
   );
 };
