@@ -99,6 +99,7 @@ const resolvers = {
         if (!poll) {
           throw new Error('Poll not found');
         }
+
     
         const vote = await Vote.create({ poll: poll._id, user: "6478b09999183cc2ae6569b6", option1: option1, option2: option2 });
     
@@ -116,6 +117,7 @@ const resolvers = {
         }
         await Poll.updateOne({ _id: pollId }, { $inc: updateObj });
     
+
         return vote;
       } catch (err) {
         console.log(err);
@@ -141,6 +143,15 @@ const resolvers = {
       } catch (err) {
         console.log(err);
         throw new Error('Failed to update user');
+      }
+    },
+    updatePoll: async (_parent, { pollId, title }, _context) => {
+      try {
+        const updatedPoll = await Poll.findByIdAndUpdate(pollId, { title }, { new: true });
+        return updatedPoll;
+      } catch (err) {
+        console.log(err);
+        throw new Error('Failed to update poll');
       }
     },
   },
