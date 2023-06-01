@@ -26,6 +26,7 @@ const resolvers = {
     votes: async () => {
       return await Vote.find();
     },
+
   },
   Mutation: {
     createUser: async (_parent, { username, email, password }) => {
@@ -145,15 +146,15 @@ const resolvers = {
         throw new Error('Failed to update user');
       }
     },
-    updatePoll: async (_parent, { pollId, title }, _context) => {
-      try {
-        const updatedPoll = await Poll.findByIdAndUpdate(pollId, { title }, { new: true });
-        return updatedPoll;
-      } catch (err) {
-        console.log(err);
-        throw new Error('Failed to update poll');
-      }
-    },
+    // updatePoll: async (_parent, { pollId, title }, _context) => {
+    //   try {
+    //     const updatedPoll = await Poll.findByIdAndUpdate(pollId, { title }, { new: true });
+    //     return updatedPoll;
+    //   } catch (err) {
+    //     console.log(err);
+    //     throw new Error('Failed to update poll');
+    //   }
+    // },
   },
 };
 
