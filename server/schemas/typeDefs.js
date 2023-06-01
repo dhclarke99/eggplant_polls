@@ -24,6 +24,8 @@ const typeDefs = gql`
     endTime: String
     option1: String
     option2: String
+    option1votes: Int
+    option2votes: Int
     users: [User]
     votes: [Vote]
   }

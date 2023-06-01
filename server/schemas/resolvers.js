@@ -112,11 +112,7 @@ const resolvers = {
         // }
 
         const vote = await Vote.create({ poll: poll._id, user: user._id, option1: option1, option2: option2 });
-        // update poll with vote count logic
-        await Poll.updateOne(
-          {_id: pollId},
-          {$inc: {option1Votes: option1 ? 1 : 0, option2Votes: option2 ? 1 : 0}}
-        );
+        await Poll.findByIdAndUpdate(pollId, {$inc: {option1votes: option1 ? 1 : 0, option2votes: option2 ? 1 : 0 }});
 
         return vote;
       } catch (err) {
@@ -141,6 +137,15 @@ const resolvers = {
       } catch (err) {
         console.log(err);
         throw new Error('Failed to update user');
+      }
+    },
+    updatePoll: async (_parent, { pollId, title }, _context) => {
+      try {
+        const updatedPoll = await Poll.findByIdAndUpdate(pollId, { title }, { new: true });
+        return updatedPoll;
+      } catch (err) {
+        console.log(err);
+        throw new Error('Failed to update poll');
       }
     },
   },
