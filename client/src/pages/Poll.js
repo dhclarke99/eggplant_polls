@@ -38,6 +38,10 @@ const Poll = () => {
     }
   };
 
+  const handleClick = () => {
+    
+    console.log(Auth.getProfile().data._id)
+  }
   return (
     
     <main className="flex-row justify-center mb-4">
@@ -82,6 +86,7 @@ const Poll = () => {
                   className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
                   type="submit"
+                  
                 >
                   Submit
                 </button>

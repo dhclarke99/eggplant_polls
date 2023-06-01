@@ -12,7 +12,11 @@ const voteSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  option: {
+  option1: {
+    type: String,
+    required: true,
+  },
+  option2: {
     type: String,
     required: true,
   },
