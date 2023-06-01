@@ -25,13 +25,15 @@ const typeDefs = gql`
     option1: String
     option2: String
     users: [User]
+    votes: [Vote]
   }
 
   type Vote {
     _id: ID
     polls: Poll
     user: User
-    option: String
+    option1: String
+    option2: String
   }
 
   type Auth {
@@ -53,7 +55,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     createPoll(pollId: String!): Poll
     removePoll(pollId: ID!): Poll
-    createVote(pollId: ID!, optionId: String!): Vote
+    createVote(pollId: ID!, option1: String, option2: String): Vote 
     updateUser(userID: ID!): User
   }
 `;
