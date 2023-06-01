@@ -14,11 +14,11 @@ const voteSchema = new Schema({
   },
   option1: {
     type: String,
-    required: true,
+    required: false,
   },
   option2: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 

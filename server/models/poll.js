@@ -41,7 +41,11 @@ const pollSchema = new Schema({
     users: [{
         type: Schema.Types.ObjectId,
         ref: 'User',
-    }]
+    }],
+    votes: [{
+        type: Schema.Types.ObjectId,
+        ref: "Vote"
+    }],
 
 });
 
