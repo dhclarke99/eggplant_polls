@@ -97,7 +97,7 @@ const resolvers = {
       
       try {
         //   const user = await User.findById(context.user._id);
-        const user = await User.findById("6477820b424319c1f4f5b8b4");
+        const user = await User.findById("6478b09999183cc2ae6569b6");
         const poll = await Poll.findOne({ _id: pollId });
         if (!poll) {
           throw new Error('Poll not found');
@@ -116,25 +116,25 @@ const resolvers = {
         throw new Error('Failed to create vote');
       }
     },
-    // updateUser: async (parent, args, context) => {
-    //   if (!context.user) {
-    //     throw new AuthenticationError('Not Authenticated');
-    //   }
+    updateUser: async (parent, {userId}, context) => {
+      // if (!context.user) {
+      //   throw new AuthenticationError('Not Authenticated');
+      // }
   
-    //   try {
-    //     const user = await User.findByIdAndUpdate(
-    //       context.user._id,
-    //       { $inc: {eggplants: 1}},
-    //       { new: true }
-    //     );
+      try {
+        const user = await User.findByIdAndUpdate(
+          userId,
+          { $inc: {eggplants: 1}},
+          { new: true }
+        );
   
-    //     console.log(`Eggplants rewarded to user ${user.username}`);
-    //     return user;
-    //   } catch (err) {
-    //     console.log(err);
-    //     throw new Error('Failed to update user');
-    //   }
-    // },
+        // console.log(`Eggplants rewarded to user ${user.username}`);
+        return user;
+      } catch (err) {
+        console.log(err);
+        throw new Error('Failed to update user');
+      }
+    },
   },
 };
 
