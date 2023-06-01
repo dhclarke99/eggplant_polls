@@ -11,7 +11,6 @@ const resolvers = {
       return await User.findOne({ username }).populate('polls');
     },
     polls: async () => {
-
       return await Poll.find();
     },
     poll: async (parent, { pollId }) => {
@@ -95,6 +94,7 @@ const resolvers = {
       // if (!context.user) {
       //   throw new AuthenticationError('Not Authenticated');
       // }
+      
       try {
         //   const user = await User.findById(context.user._id);
         const user = await User.findById("6477820b424319c1f4f5b8b4");
@@ -103,11 +103,11 @@ const resolvers = {
           throw new Error('Poll not found');
         }
 
-        const existingVote = await Vote.findOne({ poll: poll._id, user: user._id });
+        // const existingVote = await Vote.findOne({ poll: poll._id, user: user._id });
 
-        if (existingVote) {
-          throw new Error('you already voted bishhh');
-        }
+        // if (existingVote) {
+        //   throw new Error('you already voted bishhh');
+        // }
 
         const vote = await Vote.create({ poll: poll._id, user: user._id, option: optionId });
         return vote;
@@ -116,6 +116,25 @@ const resolvers = {
         throw new Error('Failed to create vote');
       }
     },
+    // updateUser: async (parent, args, context) => {
+    //   if (!context.user) {
+    //     throw new AuthenticationError('Not Authenticated');
+    //   }
+  
+    //   try {
+    //     const user = await User.findByIdAndUpdate(
+    //       context.user._id,
+    //       { $inc: {eggplants: 1}},
+    //       { new: true }
+    //     );
+  
+    //     console.log(`Eggplants rewarded to user ${user.username}`);
+    //     return user;
+    //   } catch (err) {
+    //     console.log(err);
+    //     throw new Error('Failed to update user');
+    //   }
+    // },
   },
 };
 
