@@ -7,26 +7,28 @@ const resolvers = {
     users: async () => {
       return await User.find();
     },
-    user: async (parent, { username }) => {
+    user: async (_parent, { username }) => {
       return await User.findOne({ username }).populate('polls');
     },
     polls: async () => {
-      return await Poll.find();
+      return await Poll.find().populate("votes");
     },
-    poll: async (parent, { pollId }) => {
+    poll: async (_parent, { pollId }) => {
       return await Poll.findOne({ _id: pollId })
     },
-    me: async (parent, args, context) => {
-      if (context.user) {
-        return await User.findOne({ _id: context.user._id }).populate('polls');
-      } throw new AuthenticationError('Not Authenticated')
+    me: async (_parent, _args, context) => {
+      // if (context.user) {
+        // 6478b09999183cc2ae6569b6
+        // return await User.findOne({ _id: context.user._id }).populate('polls');
+        return await User.findOne({ _id: "6478b09999183cc2ae6569b6" }).populate('polls');
+      // } throw new AuthenticationError('Not Authenticated')
     },
     votes: async () => {
       return await Vote.find();
     },
   },
   Mutation: {
-    createUser: async (parent, { username, email, password }) => {
+    createUser: async (_parent, { username, email, password }) => {
       try {
         const user = await User.create({ username, email, password });
         const token = signToken(user);
@@ -36,7 +38,7 @@ const resolvers = {
         throw new Error('Failed to create user');
       }
     },
-    login: async (parent, { email, password }) => {
+    login: async (_parent, { email, password }) => {
       try {
         const user = await User.findOne({ email });
         if (!user) {
@@ -53,7 +55,7 @@ const resolvers = {
         throw new Error('Failed to login');
       }
     },
-    createPoll: async (parent, { pollId, value }, context) => {
+    createPoll: async (_parent, { pollId, value }, context) => {
       if (!context.user) {
         throw new AuthenticationError('Not Authenticated');
       }
@@ -68,7 +70,7 @@ const resolvers = {
         throw new Error('Failed to create poll');
       }
     },
-    removePoll: async (parent, { pollId }, context) => {
+    removePoll: async (_parent, { pollId }, context) => {
       if (!context.user) {
         throw new AuthenticationError('Not Authenticated');
       }
@@ -90,7 +92,7 @@ const resolvers = {
         throw new Error('Failed to remove poll');
       }
     },
-    createVote: async (parent, { pollId, optionId }, context) => {
+    createVote: async (_parent, { pollId, option1, option2 }, _context) => {
       // if (!context.user) {
       //   throw new AuthenticationError('Not Authenticated');
       // }
@@ -109,14 +111,20 @@ const resolvers = {
         //   throw new Error('you already voted bishhh');
         // }
 
-        const vote = await Vote.create({ poll: poll._id, user: user._id, option: optionId });
+        const vote = await Vote.create({ poll: poll._id, user: user._id, option1: option1, option2: option2 });
+        // update poll with vote count logic
+        await Poll.updateOne(
+          {_id: pollId},
+          {$inc: {option1Votes: option1 ? 1 : 0, option2Votes: option2 ? 1 : 0}}
+        );
+
         return vote;
       } catch (err) {
         console.log(err);
         throw new Error('Failed to create vote');
       }
     },
-    updateUser: async (parent, {userId}, context) => {
+    updateUser: async (_parent, {userId}, _context) => {
       // if (!context.user) {
       //   throw new AuthenticationError('Not Authenticated');
       // }
