@@ -29,4 +29,25 @@ body {
 header {
   background-color: #69A583 !important;
   color: white;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
+
+#navbar {
+  text-align: center;
+  font-size: 48px;
+}
+
+#wager {
+  text-align: center;
+  font-size: 30px;
+  display: list-item;
+  margin-bottom: 10px;
+}
+
+ul {
+  display: inline-flex;
+  margin-inline: 160px;
+}
+
