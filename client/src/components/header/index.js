@@ -9,40 +9,40 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <div>
-          <Link className="text-light" to="/">
-            <h1 className="m-0">EggPlant Polls</h1>
-          </Link>
-          <p className="m-0">Wager your Eggplant currency on poll results!</p>
+    <header className="bg-primary text-light mb-4 py-3">
+        <div class="container-fluid">
+          <div class="navbar-brand" id="navbar">EggPlant Polls
+            <p className="m-0" id="wager">Wager your Eggplant currency on poll results!</p></div>
         </div>
-        <div>
+      <ul>
           {Auth.loggedIn() ? (
             <>
-              <Link className="btn btn-lg btn-info m-2" to="/me">
+              <li><Link className="btn btn-lg btn-info m-2" to="/me">
                 {Auth.getProfile().data.username}'s profile
-              </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/farm">
+              </Link></li> 
+              <li><Link className="btn btn-lg btn-light m-2" to="/farm">
                 Farm
-              </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+              </Link></li>
+              <li><button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout
-              </button>
+              </button></li>
             </>
           ) : (
             <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
+            <ul><Link className="btn btn-lg btn-info m-2" to="/">
+                Home
+              </Link></ul>
+              <ul><Link className="btn btn-lg btn-info m-2" to="/login">
                 Login
-              </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
+              </Link></ul>
+              <ul><Link className="btn btn-lg btn-light m-2" to="/signup">
                 Signup
-              </Link>
-              
+              </Link></ul>
+
             </>
-          )}
-        </div>
-      </div>
+          )
+}
+        </ul>
     </header>
   );
 };

@@ -93,26 +93,30 @@ const resolvers = {
       }
     },
     createVote: async (_parent, { pollId, option1, option2 }, _context) => {
-      // if (!context.user) {
-      //   throw new AuthenticationError('Not Authenticated');
-      // }
-      
       try {
-        //   const user = await User.findById(context.user._id);
         const user = await User.findById("6478b09999183cc2ae6569b6");
         const poll = await Poll.findOne({ _id: pollId });
         if (!poll) {
           throw new Error('Poll not found');
         }
 
-        // const existingVote = await Vote.findOne({ poll: poll._id, user: user._id });
-
-        // if (existingVote) {
-        //   throw new Error('you already voted bishhh');
-        // }
-
-        const vote = await Vote.create({ poll: poll._id, user: user._id, option1: option1, option2: option2 });
-        await Poll.findByIdAndUpdate(pollId, {$inc: {option1votes: option1 ? 1 : 0, option2votes: option2 ? 1 : 0 }});
+    
+        const vote = await Vote.create({ poll: poll._id, user: "6478b09999183cc2ae6569b6", option1: option1, option2: option2 });
+    
+        // Add the vote reference to the poll's votes array
+        poll.votes.push(vote._id);
+        await poll.save();
+    
+        // Update the poll with vote count logic
+        const updateObj = {};
+        if (option1) {
+          updateObj.option1Votes = (poll.option1Votes || 0) + 1;
+        }
+        if (option2) {
+          updateObj.option2Votes = (poll.option2Votes || 0) + 1;
+        }
+        await Poll.updateOne({ _id: pollId }, { $inc: updateObj });
+    
 
         return vote;
       } catch (err) {
@@ -120,6 +124,8 @@ const resolvers = {
         throw new Error('Failed to create vote');
       }
     },
+  
+    
     updateUser: async (_parent, {userId}, _context) => {
       // if (!context.user) {
       //   throw new AuthenticationError('Not Authenticated');
