@@ -52,24 +52,14 @@ function Farm() {
   )
   const handleHarvest = async () => {
     try {
-      // Get the user's ID from the authentication service
       const userId = Auth.getProfile().data._id;
-console.log(userId)
-      // Perform the necessary logic to update the user's eggplant count in the backend
+      console.log(userId);
+  
       await updateUser({
-        variables: {userId, eggplants: eggplantCount},
+        variables: { userId, eggplants: 0 },
         refetchQueries: [{ query: QUERY_USER, variables: { username: userData.username } }],
       });
-
-      // const updatedUser = data.updateUser
-      // setEggplantCount(updatedUser.eggplants);
-      // console.log(`Updated eggplants count in frontend: ${updatedUser.eggplants}`);
-
-      // const updatedEggplantCount = data.updateUser.eggplants;
-
-      // // Update the eggplant count in the component state
-      // setEggplantCount(updatedEggplantCount);
-
+  
       setEggplantCount(0);
     } catch (error) {
       console.error(error);
