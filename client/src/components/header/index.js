@@ -29,7 +29,7 @@ const Header = () => {
               {loggedInUser?.username}'s profile ({loggedInUser?.eggplants || 0} eggplants)
             </Link></ul>
             <ul><Link className="btn btn-lg btn-light m-2" to="/farm">
-              Farm
+              Farm.
             </Link></ul>
             <ul><button className="btn btn-lg btn-light m-2" onClick={logout}>
               Logout
