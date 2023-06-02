@@ -127,17 +127,16 @@ const resolvers = {
     },
   
     
-    updateUser: async (_parent, {userId}, _context) => {
-      // if (!context.user) {
-      //   throw new AuthenticationError('Not Authenticated');
-      // }
-  
+    updateUser: async (_parent, {userId, eggplants}, _context,) => {
       try {
+        console.log(userId, eggplants)
         const user = await User.findByIdAndUpdate(
           userId,
-          { $inc: {eggplants: 1}},
-          { new: true }
+          {eggplants},
+          {new: true}
         );
+
+        console.log(`Updated eggplants count for user ${user.username}: ${user.eggplants}`)
   
         // console.log(`Eggplants rewarded to user ${user.username}`);
         return user;

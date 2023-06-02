@@ -38,3 +38,12 @@ mutation Mutation($title: String!, $description: String!, $value: Int!, $option1
   }
 }
 `;
+
+export const UPDATE_USER = gql`
+mutation Mutation($userId: ID!, $eggplants: Int!) {
+  updateUser(userId: $userId, eggplants: $eggplants) {
+    eggplants
+    _id
+  }
+}
+`;

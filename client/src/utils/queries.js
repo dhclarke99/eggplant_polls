@@ -12,6 +12,13 @@ query polls {
     }
   }
 `;
+export const QUERY_USER = gql`
+query Query($username: String!) {
+  user(username: $username) {
+    eggplants
+  }
+}
+`;
 
 export const QUERY_ME = gql`
 query Query {
@@ -33,6 +40,16 @@ query Query {
 //       tech2
 //       true_votes
 //       false_votes
+//     }
+//   }
+// `;
+
+// import { useMutation, gql } from '@apollo/client';
+
+// const UPDATE_USER_EGGPLANT_COUNT = gql`
+//   mutation UpdateUserEggplantCount($userId: ID!, $eggplantCount: Int!) {
+//     updateUser(userId: $userId, eggplantCount: $eggplantCount) {
+//       eggplantCount
 //     }
 //   }
 // `;
