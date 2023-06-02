@@ -23,33 +23,18 @@ mutation CreateUser($username: String!, $email: String!, $password: String!) {
 }
 `;
 
-export const ADD_POLL = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-      }
-    }
-  }
-`;
 
-// export const ADD_COMMENT = gql`
-//   mutation addComment($thoughtId: ID!, $commentText: String!) {
-//     addComment(thoughtId: $thoughtId, commentText: $commentText) {
-//       _id
-//       thoughtText
-//       thoughtAuthor
-//       createdAt
-//       comments {
-//         _id
-//         commentText
-//         createdAt
-//       }
-//     }
-//   }
-// `;
+export const ADD_POLL = gql`
+mutation Mutation($title: String!, $description: String!, $value: Int!, $option1: String!, $option2: String!) {
+  createPoll(title: $title, description: $description, value: $value, option1: $option1, option2: $option2) {
+    title
+    description
+    value
+    creator {
+      _id
+      username
+    }
+    
+  }
+}
+`;
