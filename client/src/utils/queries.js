@@ -12,6 +12,14 @@ query polls {
     }
   }
 `;
+export const QUERY_USER = gql`
+query Query($username: String!) {
+  user(username: $username) {
+    eggplants
+  }
+}
+`;
+
 
 // export const QUERY_MATCHUPS = gql`
 //   query matchups($_id: String) {

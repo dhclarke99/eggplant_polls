@@ -126,7 +126,7 @@ const resolvers = {
     },
   
     
-    updateUser: async (_parent, {userId}, _context) => {
+    updateUser: async (_parent, {userId, eggplants}, _context,) => {
       // if (!context.user) {
       //   throw new AuthenticationError('Not Authenticated');
       // }
@@ -134,7 +134,7 @@ const resolvers = {
       try {
         const user = await User.findByIdAndUpdate(
           userId,
-          { $inc: {eggplants: 1}},
+          { $set: {eggplants: eggplants}},
           { new: true }
         );
   
