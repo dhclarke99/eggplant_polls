@@ -58,7 +58,7 @@ const typeDefs = gql`
     createPoll(title: String!, description: String!, value: Int!, option1: String!, option2: String!): Poll
     removePoll(pollId: ID!): Poll
     createVote(pollId: ID!, option1: String, option2: String): Vote 
-    updateUser(userID: ID!, eggplants: Int): User
+    updateUser(userId: ID!, eggplants: Int!): User
     updatePoll(pollId: ID!, title: String!): Poll!
   }
 `;

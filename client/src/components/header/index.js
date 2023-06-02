@@ -8,6 +8,9 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
   };
+
+  const loggedInUser = Auth.getProfile().data;
+  
   return (
     <header className="bg-primary text-light mb-4 py-3">
       <div class="container-fluid">
@@ -22,7 +25,8 @@ const Header = () => {
               Home
             </Link></ul>
             <ul><Link className="btn btn-lg btn-info m-2" to="/me">
-              {Auth.getProfile().data.username}'s profile
+              {/* {Auth.getProfile().data.username}'s profile */}
+              {loggedInUser.username}'s profile ({loggedInUser.eggplants} eggplants)
             </Link></ul>
             <ul><Link className="btn btn-lg btn-light m-2" to="/farm">
               Farm
