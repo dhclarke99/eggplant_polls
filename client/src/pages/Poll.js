@@ -48,9 +48,9 @@ const Poll = () => {
     
             <>
             <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Create Poll</h4>
-          <div className="card-body">
+        <div className="card" id="newPoll">
+          <h4 className="card-header bg-dark text-light p-2" id="createNewPoll">Create Poll</h4>
+          <div className="card-body" >
             {data ? (
               <p>
                 Success! You may now head{' '}

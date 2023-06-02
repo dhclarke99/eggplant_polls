@@ -104,6 +104,19 @@ display: list-item;
 columns: 2;
   }
 
+  #createNewPoll {
+    display: inline-flexbox;
+    margin-top: 30px;
+    padding-inline: 30px;
+    size: 25px;
+  }
+  
+  #newPoll {
+    font-size: 30px;
+    align-self: center;
+    margin-bottom: 20px;
+  }
+
 
 
 
