@@ -11,8 +11,8 @@ const Header = () => {
   return (
     <header className="bg-primary text-light mb-4 py-3">
       <div class="container-fluid">
+      <img src="./assets/images/eggplantBox.png" alt="Box of Eggplants" id="headerimg"></img>
         <div class="navbar-brand" id="navbar">EggPlant Polls 
-        <img src="./assets/images/eggplantPlant.png" alt="Eggplant Plant" id="headerimg"></img>
           <p className="m-0" id="wager">Wager your Eggplant currency on poll results!</p></div>
       </div>
       <ul>
