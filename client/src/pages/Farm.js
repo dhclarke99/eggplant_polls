@@ -43,13 +43,13 @@ function Farm() {
   const handleClick = () => {
     setEggplantCount((prevCount) => prevCount + 1);
   };
-  useEffect(
-    () => {
-      if (userData) {
-        setEggplantCount(userData.eggplants)
-      }
-    }, [data, userData]
-  )
+  // useEffect(
+  //   () => {
+  //     if (userData) {
+  //       setEggplantCount(userData.eggplants)
+  //     }
+  //   }, [data, userData]
+  // )
   const handleHarvest = async () => {
     try {
       const userId = Auth.getProfile().data._id;
