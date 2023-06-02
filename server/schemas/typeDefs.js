@@ -55,10 +55,11 @@ const typeDefs = gql`
   type Mutation {
     createUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    createPoll(pollId: String!): Poll
+    createPoll(title: String!, description: String!, value: Int!, option1: String!, option2: String!): Poll
     removePoll(pollId: ID!): Poll
     createVote(pollId: ID!, option1: String, option2: String): Vote 
     updateUser(userID: ID!): User
+    updatePoll(pollId: ID!, title: String!): Poll!
   }
 `;
 

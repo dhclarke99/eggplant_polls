@@ -26,6 +26,7 @@ const resolvers = {
     votes: async () => {
       return await Vote.find();
     },
+
   },
   Mutation: {
     createUser: async (_parent, { username, email, password }) => {
@@ -55,13 +56,13 @@ const resolvers = {
         throw new Error('Failed to login');
       }
     },
-    createPoll: async (_parent, { pollId, value }, context) => {
+    createPoll: async (_parent, { title, description, value, option1, option2 }, context) => {
       if (!context.user) {
         throw new AuthenticationError('Not Authenticated');
       }
       try {
         const user = await User.findById(context.user._id);
-        const poll = await Poll.create({ _id: pollId, creator: user._id, value });
+        const poll = await Poll.create({ title, description, creator: user._id, value, option1, option2 });
         user.polls.push(poll);
         await user.save();
         return poll;
