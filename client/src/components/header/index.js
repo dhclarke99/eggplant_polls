@@ -1,15 +1,15 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Auth from '../../utils/auth';
+import AuthService from '../../utils/auth';
 
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
-    Auth.logout();
+    AuthService.logout();
   };
 
-  const loggedInUser = Auth.getProfile().data;
+  const loggedInUser = AuthService.getProfile()
   
   return (
     <header className="bg-primary text-light mb-4 py-3">
@@ -19,14 +19,14 @@ const Header = () => {
           <p className="m-0" id="wager">Wager your Eggplant currency on poll results!</p></div>
       </div>
       <ul>
-        {Auth.loggedIn() ? (
+        {AuthService.loggedIn() ? (
           <>
           <ul><Link className="btn btn-lg btn-info m-2" to="/">
               Home
             </Link></ul>
             <ul><Link className="btn btn-lg btn-info m-2" to="/me">
-              {/* {Auth.getProfile().data.username}'s profile */}
-              {loggedInUser?.username}'s profile ({loggedInUser?.eggplants || 0} eggplants)
+              {AuthService.getProfile().data.username}'s profile
+              {/* {loggedInUser?.username}'s profile ({loggedInUser?.eggplants || 0} eggplants) */}
             </Link></ul>
             <ul><Link className="btn btn-lg btn-light m-2" to="/farm">
               Farm
