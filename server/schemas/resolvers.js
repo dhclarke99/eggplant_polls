@@ -17,11 +17,19 @@ const resolvers = {
       return await Poll.findOne({ _id: pollId })
     },
     me: async (_parent, _args, context) => {
-      // if (context.user) {
-        // 6478b09999183cc2ae6569b6
-        // return await User.findOne({ _id: context.user._id }).populate('polls');
-        return await User.findOne({ _id: "6478b09999183cc2ae6569b6" }).populate('polls');
-      // } throw new AuthenticationError('Not Authenticated')
+      if (!context.user) {
+        throw new AuthenticationError('un Authenticated');
+        // 647789ecd6fa91729069b8b9
+      }
+        try {
+          console.log(context.user._id)
+        return await User.findOne({ _id: context.user._id }).populate('polls');
+        
+        // return await User.findOne({ _id: "64778d30cdb4befbb37a1479" }).populate('polls');
+      } catch (error) {
+        console.log(error)
+
+      }
     },
     votes: async () => {
       return await Vote.find();
@@ -58,7 +66,7 @@ const resolvers = {
     },
     createPoll: async (_parent, { title, description, value, option1, option2 }, context) => {
       if (!context.user) {
-        throw new AuthenticationError('Not Authenticated');
+        throw new AuthenticationError('un Authenticated');
       }
       try {
         const user = await User.findById(context.user._id);
@@ -127,17 +135,16 @@ const resolvers = {
     },
   
     
-    updateUser: async (_parent, {userId}, _context) => {
-      // if (!context.user) {
-      //   throw new AuthenticationError('Not Authenticated');
-      // }
-  
+    updateUser: async (_parent, {userId, eggplants}, _context,) => {
       try {
+        console.log(userId, eggplants)
         const user = await User.findByIdAndUpdate(
           userId,
-          { $inc: {eggplants: 1}},
-          { new: true }
+          {eggplants},
+          {new: true}
         );
+
+        console.log(`Updated eggplants count for user ${user.username}: ${user.eggplants}`)
   
         // console.log(`Eggplants rewarded to user ${user.username}`);
         return user;
