@@ -1,98 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
-import { useMutation } from '@apollo/client';
-import { ADD_POLL } from '../utils/mutations';
-
-import Auth from '../utils/auth';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../utils/queries';
 
 const Poll = () => {
-  const [formState, setFormState] = useState({
-    title: '',
-    description: '',
-    value: '',
-  });
-  const [addPoll, { error, data }] = useMutation(ADD_POLL);
+  const { data } = useQuery(QUERY_ME);
+  const polls = data?.me?.polls || [];
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formState);
-
-    try {
-      const { data } = await addPoll({
-        variables: { ...formState },
-      });
-
-      Auth.login(data.addUser.token);
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  console.log(data);
+  console.log(polls);
 
   return (
     <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Create New Poll</h4>
-          <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Title"
-                  name="title"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Description"
-                  name="description"
-                  type="text"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="DropdownList of #s?"
-                  name="value"
-                  type="value"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
-
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
+      {polls.map((poll) => {
+        return (
+          <div key={poll._id}>
+            <h3>{poll.title}</h3>
+            <p>{poll.description}</p>
+            <p>Reward: {poll.value} eggplants</p>
+            <button>{poll.option1}</button>
+            <button>{poll.option2}</button>
           </div>
-        </div>
-      </div>
+        );
+      })}
     </main>
   );
 };
