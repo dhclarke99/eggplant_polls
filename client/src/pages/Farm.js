@@ -76,6 +76,6 @@ function Farm() {
       </div>
     </div>
   );
-}
+};
 
 export default Farm;
