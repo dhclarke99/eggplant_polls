@@ -21,6 +21,18 @@ query Query($username: String!) {
 `;
 
 
+export const QUERY_ME = gql`
+query Query {
+  me {
+    eggplants
+    polls {
+      title
+      description
+    }
+  }
+}
+`;
+
 // export const QUERY_MATCHUPS = gql`
 //   query matchups($_id: String) {
 //     matchups(_id: $_id) {

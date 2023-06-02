@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 import { ADD_POLL } from '../utils/mutations';
+import { QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
@@ -11,8 +12,32 @@ const Poll = () => {
     title: '',
     description: '',
     value: '',
+    option1: '',
+    option2: '',
   });
-  const [addPoll, { error, data }] = useMutation(ADD_POLL);
+  const [addPoll, { error }] = useMutation(ADD_POLL
+  //   , {
+  //   update(cache, { data: { addPoll } }) {
+  //     try {
+      
+
+  //       cache.writeQuery({
+          
+  //         data: { polls: [addPoll] },
+  //       });
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
+
+  //     // update me object's cache
+  //     const { me } = cache.readQuery({ query: QUERY_ME });
+  //     cache.writeQuery({
+  //       query: QUERY_ME,
+  //       data: { me: { ...me, polls: [...me.polls, addPoll] } },
+  //     });
+  //   },
+  // }
+  );
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,10 +54,10 @@ const Poll = () => {
 
     try {
       const { data } = await addPoll({
-        variables: { ...formState },
+        variables: { title: formState.title, description: formState.description, value: parseInt(formState.value), option1: formState.option1, option2: formState.option2 },
       });
 
-      Auth.login(data.addUser.token);
+      // Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
@@ -51,19 +76,14 @@ const Poll = () => {
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Create Poll</h4>
           <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
+            
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
                   placeholder="Title"
                   name="title"
                   type="text"
-                  value={formState.name}
+                  value={formState.title}
                   onChange={handleChange}
                 />
                 <input
@@ -71,7 +91,7 @@ const Poll = () => {
                   placeholder="Description"
                   name="description"
                   type="text"
-                  value={formState.email}
+                  value={formState.description}
                   onChange={handleChange}
                 />
                 <input
@@ -79,7 +99,23 @@ const Poll = () => {
                   placeholder="DropdownList of #s?"
                   name="value"
                   type="value"
-                  value={formState.password}
+                  value={formState.value}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Option1"
+                  name="option1"
+                  type="text"
+                  value={formState.option1}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Option2"
+                  name="option2"
+                  type="text"
+                  value={formState.option2}
                   onChange={handleChange}
                 />
                 <button
@@ -91,7 +127,7 @@ const Poll = () => {
                   Submit
                 </button>
               </form>
-            )}
+            
 
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
