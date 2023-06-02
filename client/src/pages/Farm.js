@@ -58,7 +58,7 @@ function Farm() {
       <div className="card-header bg-dark text-center">
         <h1>Farm for Eggplants!</h1>
         <p>Eggplantz farmed: {eggplantCount}</p>
-        <button onClick={handleClick}>Farm</button>
+        <button onClick={handleClick} id="farmEggplant"><img src="./assets/images/eggplantPlant.png" alt="Eggplant Plant"></img></button>
       </div>
     </div>
   );

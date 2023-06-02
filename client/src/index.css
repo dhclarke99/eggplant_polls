@@ -30,7 +30,7 @@ header {
   background-color: #69A583 !important;
   color: white;
   padding-left: 20px;
-  padding-top: 20px;
+  padding-top: 0px;
   padding-bottom: 20px;
 }
 
@@ -108,7 +108,8 @@ top: 130px;
 border: white;
 border-style: solid;
 display: list-item;
-columns: 2;
+columns: 4;
+column-gap: 20px;
   }
 
   #createNewPoll {
@@ -124,6 +125,10 @@ columns: 2;
     margin-bottom: 20px;
   }
 
+  #farmEggplant{
+margin-top: 30px;
+
+  } 
 
 
 
