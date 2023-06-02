@@ -41,8 +41,8 @@ const Poll = () => {
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Create New Poll</h4>
+        <div className="card" id="newPoll">
+          <h4 className="card-header bg-dark text-light p-2" id="createNewPoll">Create New Poll</h4>
           <div className="card-body">
             {data ? (
               <p>
