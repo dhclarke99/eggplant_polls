@@ -43,8 +43,8 @@ const Home = () => {
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <ul className="square">
-            
+          <ul className="square" id="pollBox" >
+    
             {pollList.map((poll) => {
               return (
                 <div key={poll._id}>
@@ -53,6 +53,7 @@ const Home = () => {
                   <p>Reward: {poll.value} eggplants</p>
                   <button onClick={handleVote}>{poll.option1}</button>
                   <button onClick={handleVote}>{poll.option2}</button>
+                  
                 </div>
               );
             })}

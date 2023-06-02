@@ -154,7 +154,7 @@ const resolvers = {
     //     console.log(err);
     //     throw new Error('Failed to update poll');
     //   }
-    // },
+    //},
   },
 };
 
