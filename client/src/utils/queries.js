@@ -27,10 +27,14 @@ query Query {
     polls {
       title
       description
+      value
+      option1
+      option2
     }
   }
 }
 `;
+
 
 // export const QUERY_MATCHUPS = gql`
 //   query matchups($_id: String) {
