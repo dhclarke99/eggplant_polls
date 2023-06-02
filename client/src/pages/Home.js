@@ -38,7 +38,8 @@ const Home = () => {
     <div className="card bg-white card-rounded w-50">
       
       <div className="card-body m-5">
-        <h1>Here is a list of polls you can vote on:</h1>
+        <div id="homeHeader">
+        <h1>Here is a list of polls you can vote on:</h1></div>
         {loading ? (
           <div>Loading...</div>
         ) : (
@@ -58,10 +59,10 @@ const Home = () => {
           </ul>
         )}
       </div>
-      <div className="card-footer text-center m-3">
+      <div className="card-footer text-center m-3" id="homeFooter">
         <h2>Ready to create a new poll?</h2>
         
-          <button className="btn btn-lg btn-danger" onClick={handleClick}>Create Poll!</button>
+          <button className="btn btn-lg btn-danger" id="createPoll" onClick={handleClick}>Create Poll!</button>
         
       </div>
     </div>
