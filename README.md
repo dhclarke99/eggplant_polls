@@ -25,6 +25,8 @@ Usage is available on Heroku
 
 [Dreamstime](https://www.dreamstime.com/different-vegetable-nightshade-plants-pepper-tomato-potato-eggplant-crop-general-view-plant-root-system-isolated-image167409577)
 
+[Vecteezy](https://www.vecteezy.com/vector-art/605178-wooden-board-with-eggplants)
+
 ## License
 
 None

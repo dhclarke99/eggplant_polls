@@ -70,10 +70,12 @@ const Poll = () => {
     
             <>
             <div className="col-12 col-lg-10">
-        <div className="card">
+
+        <div className="card" id="newPoll">
           <h4 className="card-header bg-dark text-light p-2">Create Poll</h4>
           <div className="card-body">
             
+
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
