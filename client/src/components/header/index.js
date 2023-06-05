@@ -1,9 +1,8 @@
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../../utils/auth';
 import { QUERY_USER_by_id } from '../../utils/queries';
-import {useQuery} from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
 const Header = () => {
   const logout = (event) => {
@@ -12,15 +11,34 @@ const Header = () => {
   };
 
   const loggedInUser = AuthService.getProfile()?.data;
-  console.log(loggedInUser)
+  console.log(loggedInUser);
 
-const loggedInUserId = AuthService.getProfile()?.data.id;
+  const loggedInUserId = AuthService.getProfile()?.data._id;
+  console.log(loggedInUserId);
+  const { loading, error, data } = useQuery(QUERY_USER_by_id, {
+    variables: { userId: loggedInUserId}
+  });
 
-const { loading, error, data } = useQuery(QUERY_USER_by_id, {
-  variables: { userId: loggedInUserId },
-});
+  const [userData, setUserData] = useState(null);
 
-const userData = data?.user;
+  useEffect(() => {
+    if (data) {
+      setUserData(data.user);
+    }
+  }, [data]);
+
+  console.log(userData);
+  console.log(loading);
+console.log(error);
+console.log(data);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 console.log(userData)
 
   return (
@@ -38,7 +56,7 @@ console.log(userData)
             </Link></ul>
             <ul><Link className="btn btn-lg btn-info m-2" to="/me">
               {AuthService.getProfile().data.username}'s profile
-              {userData?.username} ({loggedInUser?.eggplants || 0} eggplants)
+              {userData?.username} ({userData?.eggplants} eggplants)
             </Link></ul>
             <li style={{ listStyleType: 'none' }}><Link className="btn btn-lg btn-light m-2" to="/farm">
               Farm
