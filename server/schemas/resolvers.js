@@ -7,8 +7,8 @@ const resolvers = {
     users: async () => {
       return await User.find();
     },
-    user: async (_parent, { username }) => {
-      return await User.findOne({ username }).populate('polls');
+    user: async (_parent, { userId }) => {
+      return await User.findOne({ userId }).populate('polls');
     },
     polls: async () => {
       return await Poll.find().populate("votes");

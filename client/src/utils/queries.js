@@ -20,6 +20,14 @@ query Query($username: String!) {
 }
 `;
 
+export const QUERY_USER_by_id = gql`
+query Query($id: String!) {
+  user(id: $id) {
+    eggplants
+  }
+}
+`;
+
 export const QUERY_ME = gql`
 query Query {
   me {
