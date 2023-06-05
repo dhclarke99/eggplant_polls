@@ -40,8 +40,17 @@ function Farm() {
   const { data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
 
-  const handleClick = () => {
+  const handleClick = async () => {
     setEggplantCount((prevCount) => prevCount + 1);
+
+    try {
+      const userId = userData._id; // Access the user's ID from userData
+      await updateUser({
+        variables: { userId, eggplants: eggplantCount + 1 }, // Pass the updated eggplants count
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
   // useEffect(
   //   () => {
@@ -56,7 +65,7 @@ function Farm() {
       console.log(userId);
   
       await updateUser({
-        variables: { userId, eggplants: 0 },
+        variables: { userId, eggplants: eggplantCount },
         refetchQueries: [{ query: QUERY_USER, variables: { username: userData.username } }],
       });
   
