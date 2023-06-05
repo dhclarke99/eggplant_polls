@@ -8,10 +8,9 @@ Nothing is required to be installed to use the app.
 
 ## Usage
 
-Usage is available on Heroku 
+Usage is available on Heroku [through this link.](https://mysterious-taiga-03256.herokuapp.com/)
 
-[link to Website] 
-![Screenshot of webpage]
+![Screenshot of webpage](./screenshot.png)
 
 ## Credits
 
