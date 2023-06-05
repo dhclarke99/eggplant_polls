@@ -4,6 +4,7 @@ import AuthService from '../../utils/auth';
 import { QUERY_USER_by_id } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 
+
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
@@ -32,19 +33,19 @@ const Header = () => {
 console.log(error);
 console.log(data);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+  // if (error) {
+  //   return <div>Error: {error.message}</div>;
+  // }
 console.log(userData)
 
   return (
     <header className="bg-primary text-light mb-4 py-3">
       <div class="container-fluid">
-      <img src="./assets/images/eggplantBox.png" alt="Box of Eggplants" id="headerimg"></img>
+      <div> 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 🍆 </div>
         <div class="navbar-brand" id="navbar">EggPlant Polls 
           <p className="m-0" id="wager" style={{ listStyleType: 'none' }}>Wager your Eggplant currency on poll results!</p></div>
       </div>
